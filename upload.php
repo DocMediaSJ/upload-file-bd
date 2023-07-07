@@ -9,6 +9,7 @@ if(isset($_POST["submit"])) {
     // Verificar si el archivo ya existe
     if (file_exists($targetFile)) {
         echo "El archivo ya existe.";
+        echo "<br>";
         $uploadOk = 0;
     }
 
@@ -23,16 +24,19 @@ if(isset($_POST["submit"])) {
     if($imageFileType != "pdf" && $imageFileType != "doc" && $imageFileType != "docx"
         && $imageFileType != "odt" ) {
         echo "Solo se permiten archivos .pdf, .doc, docx. y .odt.";
+        echo "<br>";
         $uploadOk = 0;
     }
 
     if ($uploadOk == 0) {
         echo "Error al cargar el archivo.";
+        echo "<br>";
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
             echo "El archivo ". basename( $_FILES["fileToUpload"]["name"]). " se ha cargado correctamente.";
         } else {
             echo "Error al cargar el archivo.";
+            echo "<br>";
         }
     }
 }
